@@ -1,12 +1,21 @@
 # FANDB
 ---
+
 ## Overview
 - A multi-user application for soccer fans to save and track their favorite teams and leagues
+
+---
+## User Stories
+- As a user, 
+- As a user, 
+
 ---
 ## Wireframes
+
+
 ---
 ## RESTful Routes
----
+
 | Verb: | Url Pattern: | Action(CRUD): | Description |
 | ----- | ------------ | ------------- | -------------------------------------  |
 | GET   |   /teams     |  Show/read    | List query results from team search form | 
@@ -18,10 +27,24 @@
 | GET   |   /profile   |  Show/read    | Show user favorite teams & leagues |
 | DELETE|   /profile   |  Destroy      | Delete a user favorite |
 | PUT   |   /profile   |  Update       | Add a team/league to user favorites list (from /x/:id) |
+
+---
+
 ## API
+
+
 ---
+
 ## Models
+- Users
+- Teams
+- Leagues
+- UserFavTeams
+- UserFavLeagues 
+
+![drawio](fandb.drawio.png)
 ---
+
 ## MVP
 ---
 - User login/logout
@@ -33,5 +56,7 @@
 - User can add/delete teams/leagues to profile favorites
 
 ## Stretch Goals
+- Styling
 ---
 ## References
+
