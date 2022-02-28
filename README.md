@@ -11,7 +11,7 @@
 
 ---
 ## Wireframes
-
+![wireframes](/readmeimgs/IMG_1927.jpg)
 
 ---
 ## RESTful Routes
@@ -29,12 +29,10 @@
 | PUT   |   /profile   |  Update       | Add a team/league to user favorites list (from /x/:id) |
 
 ---
-
 ## API
 
 
 ---
-
 ## Models
 - Users
 - Teams
@@ -42,11 +40,10 @@
 - UserFavTeams
 - UserFavLeagues 
 
-![drawio](fandb.drawio.png)
+![drawio](readmeimgs/fandb.drawio.png)
 ---
 
 ## MVP
----
 - User login/logout
 - Home button
 - Profile Button
@@ -54,9 +51,10 @@
 - Home displays search forms for leagues and teams
 - Results displays list of teams or leagues user can click into for details 
 - User can add/delete teams/leagues to profile favorites
-
+---
 ## Stretch Goals
 - Styling
+
 ---
 ## References
 
