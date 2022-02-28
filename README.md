@@ -6,7 +6,7 @@
 
 ---
 ## User Stories
-- As a user, I want sign up for a fandb account with my email and password 
+- As a user, I want to sign up for a fandb account with my email and password 
 - As a user, I want to query by soccer team or league
 - As a user, I want to click into a team or league and see additional information
 - As a user, I want to save & delete my favorite teams and leagues to my profile for viewing
