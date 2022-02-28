@@ -1,13 +1,16 @@
 # FANDB
----
 
+---
 ## Overview
 - A multi-user application for soccer fans to save and track their favorite teams and leagues
 
 ---
 ## User Stories
-- As a user, 
-- As a user, 
+- As a user, I want to be able to sign up for a fandb account with my email and password 
+- As a user, I want to be able to query by soccer team or league
+- As a user, I want to be able to click into a team or league and see additional information
+- As a user, I want to be able to save & delete my favorite teams and leagues to my profile for viewing
+- As a user, I should be able to log out and back in to the fandb
 
 ---
 ## Wireframes
@@ -31,6 +34,8 @@
 ---
 ## API
 
+[API-Football](https://www.api-football.com/documentation-beta)
+- generated api key, fetched league data with axios
 
 ---
 ## Models
