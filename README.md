@@ -7,6 +7,14 @@
 ---
 ## RESTful Routes
 ---
+| Verb: | Url Pattern: | Action(CRUD): | Description |
+| ----- | ------------ | ------------- | -------------------------------------  |
+| Get   |   /teams     |  Show/read    | List query results from team search form | 
+| Get   |   /teams/:id |  Show/read    | Reveal team record, squad, etc. |
+| PUT   |   /teams/:id |  Update       | Save team to profile, replace save button with delete|
+| GET   |   /profile   |  Show/read    | Show user favorite teams & leagues |
+| DELETE|   /profile   |  Destroy      | Delete a user favorite |
+| PUT   |   /profile   |  Update       | Add a team/league to user favorites list |
 ## API
 ---
 ## Models
