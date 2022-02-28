@@ -9,12 +9,15 @@
 ---
 | Verb: | Url Pattern: | Action(CRUD): | Description |
 | ----- | ------------ | ------------- | -------------------------------------  |
-| Get   |   /teams     |  Show/read    | List query results from team search form | 
-| Get   |   /teams/:id |  Show/read    | Reveal team record, squad, etc. |
+| GET   |   /teams     |  Show/read    | List query results from team search form | 
+| GET   |   /teams/:id |  Show/read    | Reveal team record, squad, etc. |
 | PUT   |   /teams/:id |  Update       | Save team to profile, replace save button with delete|
+| GET   |   /leagues     |  Show/read    | List query results from league search form | 
+| GET   |   /leagues/:id |  Show/read    | Reveal league standings |
+| PUT   |   /leagues/:id |  Update       | Save league to profile, replace save button with delete|
 | GET   |   /profile   |  Show/read    | Show user favorite teams & leagues |
 | DELETE|   /profile   |  Destroy      | Delete a user favorite |
-| PUT   |   /profile   |  Update       | Add a team/league to user favorites list |
+| PUT   |   /profile   |  Update       | Add a team/league to user favorites list (from /x/:id) |
 ## API
 ---
 ## Models
