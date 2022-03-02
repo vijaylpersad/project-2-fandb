@@ -7,17 +7,7 @@
   <title>FANDB</title>
 </head>
 <body>
-    <nav>
-        <ul>
-            <% if(user) { %>
-            <li><a href="/users/profile">profile</a></li>
-            <li><a href="/users/logout">Logout</a></li>
-            <%} else { %>
-            <li><a href="/users/new">Sign-Up</a></li>
-            <li><a href="/users/login">Login</a></li>
-            <% } %>
-        </ul>
-    </nav>
+<!-- removed nav bar from auth -->
   <main>
     <%- body %>
   </main>

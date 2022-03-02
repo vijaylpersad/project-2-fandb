@@ -1,0 +1,15 @@
+sequelize model:create --name user --attributes email:string,password:string
+//fk is userId:integer
+sequelize model:create --name team --attributes squad:string,record:string
+//fk is teamId
+sequelize model:create --name league --attributes team:string,record:string,points:integer
+//fk is leagueId
+
+
+//M:M 
+sequelize model:create --name userFavTeam --attributes squad:string,record:string,userId:integer
+
+sequelize model:create --name userFavLeague --attributes league:string,userId:integer
+
+
+
