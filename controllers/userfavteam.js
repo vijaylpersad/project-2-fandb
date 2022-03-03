@@ -11,7 +11,7 @@ router.post("/", async (req, res) => {
             const [newProject, newProjectCreated] =
                 await db.userFavTeam.findOrCreate({
                     where: {
-                        name: req.body,//.name,
+                        name: req.body.name,
                         userId: req.body.userId
                     },
                 });

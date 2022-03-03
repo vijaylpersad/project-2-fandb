@@ -2,11 +2,14 @@
 
 
 
-<p><%=results%></p>
+<p>Team name: <%=results.name%></p>
+<p>Country:<%=results.country%></p>
+<p>Founded:<%=results.founded%></p>
+<p><img src='<%=results.logo%>' alt="logo"></p>
 
 
 <form action="/profile" method="POST">
-    <input type="hidden" name="name" value="<%=results%> ">
+    <input type="hidden" name="teamname" value="<%=results.name%> ">
     <br>
     <input type="hidden" name="userId" value="<%=user.id%> ">
     <input type="submit" class="btn btn-primary">

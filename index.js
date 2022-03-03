@@ -56,7 +56,9 @@ app.get('/leagues', (req,res)=>{
       //console.log(response.data)   // works to see movie details in console 
       //res.render('results.ejs')
   
+      //const searchResults = JSON.stringify(response.data.response)
       const searchResults = JSON.stringify(response.data.response)
+
       //res.render('teams/teamresults.ejs') //Object.entries returns an array. ejs templates will print contents of array
         //console.log(searchResults)
         res.render('leagues/leagueresults.ejs', {results: searchResults})
@@ -84,12 +86,14 @@ app.get('/teams', (req,res)=>{
       //console.log(response.data)   // works to see movie details in console 
       //res.render('results.ejs')
   
-      const searchResults = JSON.stringify(apiResults.data.response[0].team)
+      const searchResults = apiResults.data.response[0].team
+      //(apiResults.response[0].team)
+      //console.log(searchResults)
       //const myObj = JSON.parse(searchResults)
       //res.render('teams/teamresults.ejs') //Object.entries returns an array. ejs templates will print contents of array
         //res.send(searchResults)
  
-        res.render('teams/teamresults.ejs', {results: searchResults})
+      res.render('teams/teamresults.ejs', {results: searchResults})
     })
     .catch(function (error) {
         console.log(error);
