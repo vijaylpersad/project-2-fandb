@@ -26,6 +26,7 @@ app.use(async (req, res, next)=>{
 
 //controllers middleware
 app.use('/users', require('./controllers/users.js'))
+app.use('/profile', require('./controllers/userfavteam.js'))
 
 
 
@@ -43,7 +44,7 @@ app.get('/leagues', (req,res)=>{
     
     const config = {
         method: 'get',
-        url: `https://v3.football.api-sports.io/leagues?search=${req.query.leagueSearch}`,
+        url: `https://v3.football.api-sports.io/leagues?search=${req.query.leagueSearch}`, //search=${req.query.leagueSearch}
         headers: {
           'x-rapidapi-key': `${process.env.FOOTBALL_API_KEY}`,
           'x-rapidapi-host': 'v3.football.api-sports.io'
@@ -71,7 +72,7 @@ app.get('/teams', (req,res)=>{
     
     const config = {
         method: 'GET',
-        url: `https://v3.football.api-sports.io/teams?name=${req.query.teamSearch}`,
+        url: `https://v3.football.api-sports.io/teams?name=${req.query.teamSearch}`, //standings?team=33&season=2021
         headers: {
           'x-rapidapi-key': `${process.env.FOOTBALL_API_KEY}`,
           'x-rapidapi-host': 'v3.football.api-sports.io'
@@ -84,8 +85,10 @@ app.get('/teams', (req,res)=>{
       //res.render('results.ejs')
   
       const searchResults = JSON.stringify(apiResults.data.response[0].team)
+      //const myObj = JSON.parse(searchResults)
       //res.render('teams/teamresults.ejs') //Object.entries returns an array. ejs templates will print contents of array
         //res.send(searchResults)
+ 
         res.render('teams/teamresults.ejs', {results: searchResults})
     })
     .catch(function (error) {

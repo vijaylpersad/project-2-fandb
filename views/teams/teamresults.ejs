@@ -5,7 +5,12 @@
 <p><%=results%></p>
 
 
-
+<form action="/profile" method="POST">
+    <input type="hidden" name="name" value="<%=results%> ">
+    <br>
+    <input type="hidden" name="userId" value="<%=user.id%> ">
+    <input type="submit" class="btn btn-primary">
+</form>
 
 
 <!-- retrieved ul from pokedex -->
