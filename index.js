@@ -36,12 +36,14 @@ app.get('/', (req, res)=>{
     res.render('home.ejs')
   });
 
+
+
 //GET request --use query strings -- req.query
 app.get('/leagues', (req,res)=>{
     
     const config = {
         method: 'get',
-        url: `https://v3.football.api-sports.io/leagues?name=${req.query.leagueSearch}`,
+        url: `https://v3.football.api-sports.io/leagues?search=${req.query.leagueSearch}`,
         headers: {
           'x-rapidapi-key': `${process.env.FOOTBALL_API_KEY}`,
           'x-rapidapi-host': 'v3.football.api-sports.io'
@@ -53,10 +55,10 @@ app.get('/leagues', (req,res)=>{
       //console.log(response.data)   // works to see movie details in console 
       //res.render('results.ejs')
   
-      const searchResults = JSON.stringify(response.data)
+      const searchResults = JSON.stringify(response.data.response)
       //res.render('teams/teamresults.ejs') //Object.entries returns an array. ejs templates will print contents of array
         //console.log(searchResults)
-        res.send(searchResults)
+        res.render('leagues/leagueresults.ejs', {results: searchResults})
     })
     .catch(function (error) {
         console.log(error);
@@ -77,11 +79,11 @@ app.get('/teams', (req,res)=>{
     }
   
     axios(config)
-    .then(function (response) {
+    .then(function (apiResults) {
       //console.log(response.data)   // works to see movie details in console 
       //res.render('results.ejs')
   
-      const searchResults = JSON.stringify(response.data)
+      const searchResults = JSON.stringify(apiResults.data.response[0].team)
       //res.render('teams/teamresults.ejs') //Object.entries returns an array. ejs templates will print contents of array
         //res.send(searchResults)
         res.render('teams/teamresults.ejs', {results: searchResults})
@@ -91,6 +93,10 @@ app.get('/teams', (req,res)=>{
       })
   });
   
+
+app.get('/profile', (req,res)=>{
+    res.render('profile.ejs', {userFavTeams: x, userFavLeagues: y})
+})
 
 
 // The app.listen function returns a server handle
