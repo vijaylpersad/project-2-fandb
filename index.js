@@ -105,17 +105,18 @@ app.get('/teams', (req,res)=>{
 // Get all Standings from one {league} & {season}
 // get("https://v3.football.api-sports.io/standings?league=39&season=2019");
 //GET request --use query strings -- req.query
-app.get('/teams/standings', (req,res)=>{
+app.get(`/teams/standings`, (req,res)=>{
     
   const config = {
       method: 'GET',
-      url: `https://v3.football.api-sports.io/standings?team=33&season=2021`, //standings?team=33&season=2021 ${req.query.teamid}
+      url: `https://v3.football.api-sports.io/standings?team=33&season=2021`, //standings?team=33&season=2021 ${req.query.teamid} // needs work 
       //create hidden form in teamresults to insert team id^
       headers: {
         'x-rapidapi-key': `${process.env.FOOTBALL_API_KEY2}`,
         'x-rapidapi-host': 'v3.football.api-sports.io'
       }
   }
+
 
   axios(config)
   .then(function (apiResults) {
