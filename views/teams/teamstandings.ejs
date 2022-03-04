@@ -1,0 +1,15 @@
+<h3>Here are the team standings:</h3>
+
+<% for (let i = 0; i<results.length; i++){ %>
+<%    console.log(results[i].league.standings[0][0])    %>
+<ul>
+    <li>Group: <%=results[i].league.standings[0][0].group%></li>
+    <li>Description: <%=results[i].league.standings[0][0].description%></li>
+    <li>Rank: <%=results[i].league.standings[0][0].rank%></li>
+    <li>Points: <%=results[i].league.standings[0][0].points%></li>
+    <li>Goal Differential: <%=results[i].league.standings[0][0].goalsDiff%></li>
+    <li>Form: <%=results[i].league.standings[0][0].form%></li>
+</ul>
+
+<%} %>
+

@@ -46,22 +46,22 @@ app.get('/leagues', (req,res)=>{
         method: 'get',
         url: `https://v3.football.api-sports.io/leagues?search=${req.query.leagueSearch}`, //search=${req.query.leagueSearch}
         headers: {
-          'x-rapidapi-key': `${process.env.FOOTBALL_API_KEY}`,
+          'x-rapidapi-key': `${process.env.FOOTBALL_API_KEY2}`,
           'x-rapidapi-host': 'v3.football.api-sports.io'
         }
     }
   
     axios(config)
-    .then(function (response) {
+    .then(function (apiResults) {
       //console.log(response.data)   // works to see movie details in console 
       //res.render('results.ejs')
   
       //const searchResults = JSON.stringify(response.data.response)
-      const searchResults = JSON.stringify(response.data.response)
+      const searchResults = apiResults.data.response // shows the proper object sort of 
 
       //res.render('teams/teamresults.ejs') //Object.entries returns an array. ejs templates will print contents of array
-        //console.log(searchResults)
-        res.render('leagues/leagueresults.ejs', {results: searchResults})
+        console.log(searchResults)
+        //res.render('leagues/leagueresults.ejs', {results: searchResults})
     })
     .catch(function (error) {
         console.log(error);
@@ -76,7 +76,7 @@ app.get('/teams', (req,res)=>{
         method: 'GET',
         url: `https://v3.football.api-sports.io/teams?name=${req.query.teamSearch}`, //standings?team=33&season=2021
         headers: {
-          'x-rapidapi-key': `${process.env.FOOTBALL_API_KEY}`,
+          'x-rapidapi-key': `${process.env.FOOTBALL_API_KEY2}`,
           'x-rapidapi-host': 'v3.football.api-sports.io'
         }
     }
@@ -100,6 +100,38 @@ app.get('/teams', (req,res)=>{
       })
   });
   
+
+
+// Get all Standings from one {league} & {season}
+// get("https://v3.football.api-sports.io/standings?league=39&season=2019");
+//GET request --use query strings -- req.query
+app.get('/teams/standings', (req,res)=>{
+    
+  const config = {
+      method: 'GET',
+      url: `https://v3.football.api-sports.io/standings?team=33&season=2021`, //standings?team=33&season=2021 ${req.query.teamid}
+      //create hidden form in teamresults to insert team id^
+      headers: {
+        'x-rapidapi-key': `${process.env.FOOTBALL_API_KEY2}`,
+        'x-rapidapi-host': 'v3.football.api-sports.io'
+      }
+  }
+
+  axios(config)
+  .then(function (apiResults) {
+    const searchResults = apiResults.data.response
+
+    //console.log(searchResults)
+    res.render('teams/teamstandings.ejs', {results: searchResults})
+  })
+  .catch(function (error) {
+      console.log(error);
+    })
+});
+
+
+
+
 
 app.get('/profile', (req,res)=>{
     res.render('profile.ejs', {userFavTeams: x, userFavLeagues: y})

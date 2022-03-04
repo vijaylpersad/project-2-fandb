@@ -3,17 +3,24 @@
 
 
 <p>Team name: <%=results.name%></p>
-<p>Country:<%=results.country%></p>
-<p>Founded:<%=results.founded%></p>
+<p>Country: <%=results.country%></p>
+<p>Founded: <%=results.founded%></p>
 <p><img src='<%=results.logo%>' alt="logo"></p>
+<p>Team ID: <%=results.id%></p>
 
+<form action="/teams/standings" method="GET">
+    <input type="hidden" id="teamid" name="teamid" value="<%=results.id%> ">
+  
+    <input type="submit" value="view current team standings" class="btn btn-primary">
+</form>
 
 <form action="/profile" method="POST">
     <input type="hidden" name="teamname" value="<%=results.name%> ">
     <br>
     <input type="hidden" name="userId" value="<%=user.id%> ">
-    <input type="submit" class="btn btn-primary">
+    <input type="submit" value="save to profile" class="btn btn-primary">
 </form>
+
 
 
 <!-- retrieved ul from pokedex -->
