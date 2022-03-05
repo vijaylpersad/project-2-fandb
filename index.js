@@ -38,37 +38,6 @@ app.get('/', (req, res)=>{
   });
 
 
-
-//GET request --use query strings -- req.query
-app.get('/leagues', (req,res)=>{
-    
-    const config = {
-        method: 'get',
-        url: `https://v3.football.api-sports.io/leagues?search=${req.query.leagueSearch}`, //search=${req.query.leagueSearch}
-        headers: {
-          'x-rapidapi-key': `${process.env.FOOTBALL_API_KEY2}`,
-          'x-rapidapi-host': 'v3.football.api-sports.io'
-        }
-    }
-  
-    axios(config)
-    .then(function (apiResults) {
-      //console.log(response.data)   // works to see movie details in console 
-      //res.render('results.ejs')
-  
-      //const searchResults = JSON.stringify(response.data.response)
-      const searchResults = apiResults.data.response // shows the proper object sort of 
-
-      //res.render('teams/teamresults.ejs') //Object.entries returns an array. ejs templates will print contents of array
-        console.log(searchResults)
-        //res.render('leagues/leagueresults.ejs', {results: searchResults})
-    })
-    .catch(function (error) {
-        console.log(error);
-      })
-  });
-
-
 //GET request --use query strings -- req.query
 app.get('/teams', (req,res)=>{
     
@@ -123,7 +92,7 @@ app.get(`/teams/standings`, (req,res)=>{
     const searchResults = apiResults.data.response
 
     //console.log(searchResults)
-    res.render('teams/teamstandings.ejs', {results: searchResults})
+    res.render('teams/standings.ejs', {results: searchResults})
   })
   .catch(function (error) {
       console.log(error);
@@ -132,12 +101,34 @@ app.get(`/teams/standings`, (req,res)=>{
 
 
 
+// POST fav team to profile 
 
+// POST /projects - create a new project
+app.post("/profile", async (req, res) => {
+      try {
+        //first get reference to a favteam
+          const [favteam, favteamCreated] =
+              await db.favteam.findOrCreate({
+                  where: {
+                      name: req.body.name
+                  }
+              });
+          //reference user 
+          const foundUser = 
+            await db.user.findOne({
+              where: {
+                email: req.body.email
+              }
+            })
 
-app.get('/profile', (req,res)=>{
-    res.render('profile.ejs', {userFavTeams: x, userFavLeagues: y})
-})
+          //use addModel method to attach one model to another
+          await favteam.addUser(user)
 
+          res.redirect("/profile", {favorites: favteam});
+      } catch (err) {
+          console.log("err", err);
+      }
+});
 
 // The app.listen function returns a server handle
 const server = app.listen(process.env.PORT || 8000);

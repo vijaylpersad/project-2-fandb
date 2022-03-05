@@ -15,9 +15,7 @@
 </form>
 
 <form action="/profile" method="POST">
-    <input type="hidden" name="teamname" value="<%=results.name%> ">
-    <br>
-    <input type="hidden" name="userId" value="<%=user.id%> ">
+    <input type="text" name="name" id="name" value="<%=results.name%> ">
     <input type="submit" value="save to profile" class="btn btn-primary">
 </form>
 
