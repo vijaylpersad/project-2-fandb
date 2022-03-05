@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.favteam.belongsToMany(models.user, {through: "user_favteams"})
+      
     }
   }
   favteam.init({

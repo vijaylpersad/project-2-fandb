@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      //models.userFavTeam.belongsTo(models.user)
+      //models.favteam.belongsTo(models.user)
     }
   }
   userFavTeam.init({

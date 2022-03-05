@@ -105,30 +105,35 @@ app.get(`/teams/standings`, (req,res)=>{
 
 // POST /projects - create a new project
 app.post("/profile", async (req, res) => {
+  if (req.cookies.userId) {
       try {
         //first get reference to a favteam
-          const [favteam, favteamCreated] =
-              await db.favteam.findOrCreate({
+          const [newfavteam, newfavteamCreated] =
+              await db.newfavteam.findOrCreate({
                   where: {
-                      name: req.body.name
+                      name: req.body.name,
+                      userId: req.body.userId
                   }
               });
           //reference user 
           const foundUser = 
             await db.user.findOne({
               where: {
-                email: req.body.email
+                email: req.body.email 
               }
             })
 
           //use addModel method to attach one model to another
-          await favteam.addUser(user)
+          await newfavteam.addUser(foundUser)
 
-          res.redirect("/profile", {favorites: favteam});
+          res.redirect("/profile");
       } catch (err) {
           console.log("err", err);
       }
-});
+  } else {
+    res.redirect("users/login")
+  }
+})
 
 // The app.listen function returns a server handle
 const server = app.listen(process.env.PORT || 8000);
