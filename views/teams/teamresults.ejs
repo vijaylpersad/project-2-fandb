@@ -9,14 +9,14 @@
 <p>Team ID: <%=results.id%></p>
 
 <form action="/teams/standings" method="GET">
-    <input type="hidden" id="teamid" name="teamid" value="<%=results.id%> ">
+    <input type="hidden" id="teamid" name="teamid" value="<%=results.id%>">
   
     <input type="submit" value="view current team standings" class="btn btn-primary">
 </form>
 
 <form action="/profile" method="POST">
     <input type="text" name="name" id="name" value="<%=results.name%> ">
-    <input type="text" name="userid" id="userid" value="<%=res.local.userId%> ">
+   <!-- did have a userid input  -->
     <input type="submit" value="save to profile" class="btn btn-primary">
 </form>
 

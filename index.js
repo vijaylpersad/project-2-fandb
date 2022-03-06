@@ -35,7 +35,7 @@ app.use('/profile', require('./controllers/userfavteam.js'))
 app.get('/', (req, res)=>{
     //res.send('Hello, backend!');
     res.render('home.ejs')
-  });
+});
 
 
 //GET request --use query strings -- req.query
@@ -78,7 +78,7 @@ app.get(`/teams/standings`, (req,res)=>{
     
   const config = {
       method: 'GET',
-      url: `https://v3.football.api-sports.io/standings?team=33&season=2021`, //standings?team=33&season=2021 ${req.query.teamid} // needs work 
+      url: `https://v3.football.api-sports.io/standings?team=${req.query.teamid}&season=2021`, //standings?team=33&season=2021 ${req.query.teamid} // needs work 
       //create hidden form in teamresults to insert team id^
       headers: {
         'x-rapidapi-key': `${process.env.FOOTBALL_API_KEY2}`,
@@ -98,42 +98,6 @@ app.get(`/teams/standings`, (req,res)=>{
       console.log(error);
     })
 });
-
-
-
-// POST fav team to profile 
-
-// POST /projects - create a new project
-app.post("/profile", async (req, res) => {
-  if (req.cookies.userId) {
-      try {
-        //first get reference to a favteam
-          const [newfavteam, newfavteamCreated] =
-              await db.newfavteam.findOrCreate({
-                  where: {
-                      name: req.body.name,
-                      userId: req.body.userId
-                  }
-              });
-          //reference user 
-          const foundUser = 
-            await db.user.findOne({
-              where: {
-                email: req.body.email 
-              }
-            })
-
-          //use addModel method to attach one model to another
-          await newfavteam.addUser(foundUser)
-
-          res.redirect("/profile");
-      } catch (err) {
-          console.log("err", err);
-      }
-  } else {
-    res.redirect("users/login")
-  }
-})
 
 // The app.listen function returns a server handle
 const server = app.listen(process.env.PORT || 8000);

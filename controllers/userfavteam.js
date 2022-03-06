@@ -1,28 +1,46 @@
-
-   
-let express = require("express");
-let db = require("../models");
-let router = express.Router();
+const express = require('express')
+const { route } = require('express/lib/application')
+const router = express.Router()
+const db = require('../models')
+const cryptojs = require('crypto-js')
+require('dotenv').config()
+const { decryptUserId } = require('../common.js');
 
 // POST /projects - create a new project --from jason project organizer
 router.post("/", async (req, res) => {
+    const userId = decryptUserId(req.cookies.userId);
     if (req.cookies.userId) {
         try {
-            const [newProject, newProjectCreated] =
-                await db.userFavTeam.findOrCreate({
+            //first get reference to a favteam
+            const [newfavteam] =
+                await db.newfavteam.findOrCreate({
                     where: {
                         name: req.body.name,
-                        userId: req.body.userId
-                    },
+                        userId //userId: userId
+                    }
                 });
-            res.redirect("/");
+            console.log("saved new fav team", newfavteam);
+            //reference user 
+            const foundUser = 
+                await db.user.findOne({
+                where: {
+                    id: userId
+                }
+                })
+
+            //use addModel method to attach one model to another
+            //await newfavteam.addUser(foundUser)
+
+            res.redirect("/profile");
         } catch (err) {
             console.log("err", err);
         }
     } else {
-        res.redirect("/users/login");
+        res.redirect("users/login")
     }
 });
+
+router.get("/")
 
 // // GET /projects/new - display form for creating a new project
 // router.get("/teamresults", (req, res) => {
