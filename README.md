@@ -7,9 +7,9 @@
 ---
 ## User Stories
 - As a user, I want to sign up for a fandb account with my email and password 
-- As a user, I want to query by soccer team or league
+- As a user, I want to query by soccer team
 - As a user, I want to click into a team or league and see additional information
-- As a user, I want to save & delete my favorite teams and leagues to my profile for viewing
+- As a user, I want to save & delete my favorite teams to my profile for viewing
 - As a user, I want be able to log out and back in to the fandb
 
 ---
@@ -39,11 +39,8 @@
 
 ---
 ## Models
-- Users
-- Teams
-- Leagues
-- UserFavTeams
-- UserFavLeagues 
+- user
+- newfavteam
 
 ![drawio](readmeimgs/fandb.drawio.png)
 ---
@@ -52,9 +49,9 @@
 - User login/logout
 - Home button
 - Profile Button
-- /profile displays user favorite teams and leagues
-- Home displays search forms for leagues and teams
-- Results displays list of teams or leagues user can click into for details 
+- /profile displays user favorite teams
+- Home displays team search form
+- Results displays team information and save or additional info buttons
 - User can add/delete teams/leagues to profile favorites
 ---
 ## Stretch Goals

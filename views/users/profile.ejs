@@ -3,5 +3,12 @@
 <h3>Favorite Teams: </h3>
 
 <ul>
-    
+    <%for (let i=0; i<favteams.length; i++){ %>
+    <li><%=favteams[i].name%></li>
+    <form action="/profile?_method=DELETE" method="POST">
+        <input type="hidden" id="delete" name="delete" value="<%=favteams[i].name%>">
+        <input type="submit" value="Delete from profile" class="btn btn-primary">
+    </form>
+    <% } %>
+
 </ul>

@@ -6,12 +6,14 @@ const cookieParser = require('cookie-parser')
 const cryptoJS = require('crypto-js')
 const axios = require('axios')
 const db = require('./models')
+const methodOverride = require('method-override');
 
 // MIDDLEWARE
 app.set('view engine', 'ejs') // set the view engine to ejs
 app.use(ejsLayouts) // tell express we want to use layouts
 app.use(cookieParser()) //gives us acces to req.cookies
 app.use(express.urlencoded({extended: false})) // body parser to make req.body work
+app.use(methodOverride('_method'));
 
 //custom login middleware
 app.use(async (req, res, next)=>{
@@ -26,7 +28,7 @@ app.use(async (req, res, next)=>{
 
 //controllers middleware
 app.use('/users', require('./controllers/users.js'))
-app.use('/profile', require('./controllers/userfavteam.js'))
+app.use('/profile', require('./controllers/favorites.js'))
 
 
 

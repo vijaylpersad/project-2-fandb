@@ -7,23 +7,6 @@ const cryptojs = require('crypto-js')
 require('dotenv').config()
 const { decryptUserId } = require('../common.js');
 
-router.get('/profile', async (req, res) => {
-    console.log('yo');
-    try {
-        const [favteams] = await db.newfavteam.findAll({
-            where: {
-                userId: decryptUserId(req.cookies.userId)
-            },
-        });
-        console.log({favteams:favteams});
-        res.render('users/profile.ejs', {
-            favteams
-        })
-    } catch (e) {
-        console.log('err', e);
-    }
-})
-
 router.get('/new', (req,res)=>{
     res.render('users/new.ejs')
 })
