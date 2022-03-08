@@ -15,5 +15,8 @@ sequelize model:create --name userFavLeague --attributes league:string,userId:in
 new fav teams: 
 sequelize model:create --name newfavteam --attributes name:string,userId:integer
 
+notes:
+sequelize model:create --name note --attributes note:text,userId:integer
+
 
 

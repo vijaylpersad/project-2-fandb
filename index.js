@@ -29,6 +29,8 @@ app.use(async (req, res, next)=>{
 //controllers middleware
 app.use('/users', require('./controllers/users.js'))
 app.use('/profile', require('./controllers/favorites.js'))
+//app.use('/notes', require('./controllers/notes.js'))
+app.use('/notes', require('./controllers/notes.js'))
 
 
 
