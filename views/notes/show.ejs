@@ -6,12 +6,17 @@
 </form>
 
 <ul>
-    <li><a href="/notes/edit">Edit</a></li>
+    <% for(let i = 0; i<notes.length; i++){ %>
+        <li>
+            <p>Note: <%=notes[i].note%><p>
+            <p>Created at: <%=notes[i].createdAt%><p>
+            <p>Updated at: <%=notes[i].updatedAt%><p>
+            <a href="/notes/edit/<%=notes[i].id%>">Edit</a>
+        </li>  
+    <% } %> 
     <!--DELETE BUTTON inside li..need method override <form action="/notes" method="POST">
         <input type="text" id="note" name="note" value="type notes here">
         <input type="submit" value="add note" class="btn btn-primary">
     </form> -->
-    for (let i = 0; i<notes.len)
-    <!-- <li>will contain the posted notes AND delete AND edit button </li>  -->
 </ul>
 

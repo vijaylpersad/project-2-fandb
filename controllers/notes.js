@@ -6,6 +6,7 @@ const cryptojs = require('crypto-js')
 require('dotenv').config()
 const { decryptUserId } = require('../common.js');
 
+
 /// WRITE GET DELETE POST UPDATE 
 
 router.get('/', async (req,res) =>{
@@ -18,7 +19,7 @@ router.get('/', async (req,res) =>{
         })
         console.log(notes)
         res.render("notes/show.ejs", {
-          where: {notes: notes}
+          notes: notes
         })
     } catch (e) {
         console.log('err', e)
@@ -31,20 +32,11 @@ router.post("/", async (req,res)=>{
         try {
             //const postnote =
                 await db.note.create({
-                    where: {
                         note: req.body.note,
-                        userId
-                    }
+                        userId: res.locals.user.id
                 });
-            console.log("posted note");
+            console.log("posted note", req.body);
             
-            //reference user 
-           // const foundUser = 
-                await db.user.findOne({
-                    where: {
-                        id: userId
-                    }
-                })
             res.redirect("/notes");
         } catch (err) {
             console.log("err", err);
@@ -56,22 +48,42 @@ router.post("/", async (req,res)=>{
 })
 
 //edit page and update code 
-router.get('/edit', async (req,res)=>{
+router.get('/edit/:id', async (req,res)=>{
     const userId = decryptUserId(req.cookies.userId);
     try {
         const findnote = await db.note.findOne({
             where: {
-                note: req.body.note,
-                userId
-             }
+                // note: req.body.note,
+                // userId: res.locals.user.id,
+                id: req.params.id
+            }
         })
-        console.log(findnote.note)
-        //res.render('notes/edit.ejs', {findnote})
+        console.log(findnote.id)
+        res.render('notes/edit.ejs', {findnote})
     }
     catch (err) {
         console.log("err", err)
     }
 
 })
+
+//put route
+router.put("/edit/:id", async (req,res) => {
+    try {
+    const changednote = await db.note.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+    changednote.update({
+        note: req.body.edit
+    })
+    await changednote.save()
+    res.redirect('/notes')
+    } catch (err) {
+        console.log('err', err)
+    }
+})
+
 
 module.exports = router

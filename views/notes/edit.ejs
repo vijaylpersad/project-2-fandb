@@ -1,5 +1,5 @@
 
-<form action="/notes?_method=PUT" method="POST">
+<form action="/notes/edit/<%=findnote.id%>?_method=PUT" method="POST">
     <input type="text" name="edit" id="edit" value="<%=findnote.note%>">
     <input type="submit" class="btn btn-primary" />
 </form>
