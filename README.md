@@ -22,7 +22,7 @@
 | Verb: | Url Pattern: | Action(CRUD): | Description |
 | ----- | ------------ | ------------- | -------------------------------------  |
 | GET   |   /teams     |  Show/read    | List query results from team search form | 
-| GET   |   /teams/:id |  Show/read    | Reveal team record, squad, etc. |
+| GET   |   /teams/teamStandings |  Show/read    | Reveal team record, squad, etc. |
 | PUT   |   /teams/:id |  Update       | Save team to profile, replace save button with delete|
 | GET   |   /leagues     |  Show/read    | List query results from league search form | 
 | GET   |   /leagues/:id |  Show/read    | Reveal league standings |
@@ -41,6 +41,7 @@
 ## Models
 - user
 - newfavteam
+- note
 
 ![drawio](readmeimgs/fandb.drawio.png)
 ---
