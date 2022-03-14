@@ -7,7 +7,7 @@
 ---
 ## Deployment Link
 
-![FAN-DB](https://fan-db.herokuapp.com/)
+[FAN-DB](https://fan-db.herokuapp.com/)
 
 ---
 ## Installation Instructions
