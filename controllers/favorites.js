@@ -85,35 +85,35 @@ router.delete("/", async (req, res) => {
 
 ///// WRITE GET DELETE POST and....update..? dont need get because its at top
 
-router.post("/", async (req,res)=>{
-    const userId = decryptUserId(req.cookies.userId);
-    if (req.cookies.userId) {
-        try {
-            //first get reference to a favteam
-            const postnote =
-                await db.note.create({
-                    where: {
-                        note: req.body.note,
-                        userId
-                    }
-                });
-            console.log("posted note");
+// router.post("/", async (req,res)=>{
+//     const userId = decryptUserId(req.cookies.userId);
+//     if (req.cookies.userId) {
+//         try {
+//             //first get reference to a favteam
+//             const postnote =
+//                 await db.note.create({
+//                     where: {
+//                         note: req.body.note,
+//                         userId
+//                     }
+//                 });
+//             console.log("posted note");
             
-            //reference user 
-            const foundUser = 
-                await db.user.findOne({
-                    where: {
-                        id: userId
-                    }
-                })
-            res.redirect("/profile");
-        } catch (err) {
-            console.log("err", err);
-        }
-    } else {
-        res.redirect("users/login")
-    }
+//             //reference user 
+//             const foundUser = 
+//                 await db.user.findOne({
+//                     where: {
+//                         id: userId
+//                     }
+//                 })
+//             res.redirect("/profile");
+//         } catch (err) {
+//             console.log("err", err);
+//         }
+//     } else {
+//         res.redirect("users/login")
+//     }
 
-})
+// })
 
 module.exports = router;
