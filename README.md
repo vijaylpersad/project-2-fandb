@@ -28,7 +28,7 @@
 
 ---
 ## Wireframes
-![wireframes](/readmeimgs/IMG_1927.jpg)
+![wireframes](/readmeimgs/IMG_2068.jpg)
 
 ---
 ## RESTful Routes
@@ -78,8 +78,9 @@
 - User can create and edit notes
 ---
 ## Stretch Goals
-- Styling
+- Styling, display more team details in html tables
 
 ---
 ## References
-
+https://gasei.gitbook.io/sei/05-node-express/express-sequelize
+https://www.w3schools.com/sql/sql_syntax.asp
