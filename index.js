@@ -49,7 +49,7 @@ app.get('/teams', (req,res)=>{
         method: 'GET',
         url: `https://v3.football.api-sports.io/teams?name=${req.query.teamSearch}`, //standings?team=33&season=2021
         headers: {
-          'x-rapidapi-key': `${process.env.FOOTBALL_API_KEY2}`,
+          'x-rapidapi-key': process.env.FOOTBALL_API_KEY,
           'x-rapidapi-host': 'v3.football.api-sports.io'
         }
     }
