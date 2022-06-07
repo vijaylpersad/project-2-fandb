@@ -58,7 +58,7 @@ app.get('/teams', (req,res)=>{
     .then(function (apiResults) {
       //console.log(response.data)   // works to see movie details in console 
       //res.render('results.ejs')
-  
+      console.log(apiResults)
       const searchResults = apiResults.data.response[0].team
       //(apiResults.response[0].team)
       //console.log(searchResults)
@@ -69,7 +69,7 @@ app.get('/teams', (req,res)=>{
       res.render('teams/teamresults.ejs', {results: searchResults})
     })
     .catch(function (error) {
-        console.log(error);
+        console.log("team error", error);
       })
   });
   
